@@ -32,3 +32,4 @@ c:\users\nick\documents\visual studio 2012\Projects\ccgWebApp\ccgWebApp\bin\Micr
 c:\users\nick\documents\visual studio 2012\Projects\ccgWebApp\ccgWebApp\bin\Microsoft.AspNet.FriendlyUrls.xml
 c:\users\nick\documents\visual studio 2012\Projects\ccgWebApp\ccgWebApp\obj\Debug\ccgWebApp.dll
 c:\users\nick\documents\visual studio 2012\Projects\ccgWebApp\ccgWebApp\obj\Debug\ccgWebApp.pdb
+C:\Users\Nick\Documents\Visual Studio 2012\Projects\ccgWebApp\ccgWebApp\obj\Debug\ccgWebApp.csprojResolveAssemblyReference.cache
