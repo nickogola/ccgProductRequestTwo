@@ -47,7 +47,7 @@
 
     &nbsp;
 
-    <asp:Button ID="btnsearch" runat="server" Text="Search Quantity" ValidationGroup="product" CssClass="button" OnClick="btnsearch_Click" /> <br /><br />
+    <asp:Button ID="btnsearch" runat="server" Text="Search Quantity" CssClass="button" OnClick="btnsearch_Click" /> <br /><br />
     <asp:UpdatePanel ID="UpdatePanel2" runat="server">
         <ContentTemplate> 
     <asp:GridView ID="productsGrid" runat="server" CellPadding="10" CellSpacing="10"  HeaderStyle-Font-Bold="true" Width="900px"

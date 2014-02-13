@@ -42,6 +42,7 @@ namespace ccgWebApp
             var jArray = JArray.Parse(data);
             var jArr = jArray[0];
 
+            products.Clear();
           //  List<Product> products = new List<Product>();
             if (products.Count() == 0)
             {
@@ -79,7 +80,7 @@ namespace ccgWebApp
                 myMail.ReplyTo = replyto;
 
                 // set subject and encoding
-                myMail.Subject = "Products requested";
+                myMail.Subject = "Products Details";
                 myMail.SubjectEncoding = System.Text.Encoding.UTF8;
 
                 // set body-message and encoding
