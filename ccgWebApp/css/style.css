@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /* CSS Document */
 
 body{
@@ -98,7 +98,7 @@ nav .logo{
 	text-shadow: #fff 0px 1px 0px;
 }
 nav .logo span{
-	font-size:15px;
+	font-size:20px;
 	display:block;
 	background:url(../images/a_portfolio_bg.png) no-repeat center .2em;
 	color:#c4bab7;

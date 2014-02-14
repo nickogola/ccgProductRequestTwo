@@ -21,11 +21,11 @@ namespace ccgWebApp
             //      "~/Scripts/WebForms/TreeView.js",
             //      "~/Scripts/WebForms/WebParts.js"));
             bundles.Add(new ScriptBundle("~/bundles/WebFormsJs").Include(
-                  "~/Scripts/WebForms/config.js",
-                  "~/Scripts/WebForms/html5shiv.js",
-                  "~/Scripts/WebForms/jquery.min.js",
-                  "~/Scripts/WebForms/skel.js",
-                  "~/Scripts/WebForms/skel-panels.min.js"));
+                  "~/Scripts/WebForms/jquery.js",
+                  "~/Scripts/WebForms/jquery-1.4.3.js",
+                  "~/Scripts/WebForms/jquery_002.js",
+                  "~/Scripts/WebForms/jquery_003.js",
+                  "~/Scripts/WebForms/smoothscroll.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/MsAjaxJs").Include(
                 "~/Scripts/WebForms/MsAjax/MicrosoftAjax.js",

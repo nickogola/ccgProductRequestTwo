@@ -1,10 +1,83 @@
 ﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="ccgWebApp._Default" %>
 
+<%@ Register Assembly="Telerik.Web.UI, Version=2013.2.717.45, Culture=neutral, PublicKeyToken=121fae78165ba3d4" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
+
 <asp:Content runat="server" ID="FeaturedContent" ContentPlaceHolderID="FeaturedContent">
       
 </asp:Content>
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
-   
+   <script type="text/javascript">
+       $(document).ready(function () {
+           $('.qty').bind('keyup', function () {
+               regex = /^-*[0-9,\.]+$/;
+               if (!regex.test($(this).val())) {
+                   if ($(this).val().length > 0) {
+                       $(this).next('.error').remove();
+                       $(this).after('<div class="error">Please enter a number</div>');
+                       $(this).preventdefault();
+                   }
+                   else {
+                       $(this).next('.error').remove();
+                   }
+               } else {
+                   $(this).next('.error').remove();
+               }
+           });
+
+           $('.email').bind('keyup', function () {
+               regex = /^([0-9a-zA-Z]([-\.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$/;
+               $(".mail").next('.error').remove();//
+               if (!regex.test($(this).val())) {
+                   if ($(this).val().length > 0) {
+                       $(this).next('.error').remove();
+                       $(this).after('<div class="error">Please enter a valid email address</div>');
+                       $(this).preventdefault();
+                   }
+                   else {
+                       $(this).next('.error').remove();
+                   }
+               } else {
+                   $(this).next('.error').remove();
+               }
+           });
+
+           $(".prod").click(function (event) {
+               regex = /^-*[0-9,\.]+$/;
+               if (!regex.test($(this).val())) {
+                 
+                       $('.qty').next('.error').remove();
+                       // $('.qty').after('<div class="error">Please enter a number</div>');
+                       event.preventdefault();
+               } else {
+                   $(this).next('.error').remove();
+               }
+
+               if ($(this).val().length == 0) {
+                   $('.qty').after('<div class="error">Please enter a number</div>');
+                   event.preventdefault();
+               }
+           });
+           $(".mail").click(function (event) {
+               regex = /^([0-9a-zA-Z]([-\.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$/;
+               if (!regex.test($('.email').val())) {
+                       $('.email').next('.error').remove();
+                       $('.email').after('<div class="error">Please enter a valid email address</div>');
+                       event.preventDefault();
+                   
+               } else {
+                   $(this).next('.error').remove();
+               }
+           });
+
+           $(".msg").click(function (event) {
+               if ($("#message").val() == null) {
+                   $("#message").next('.error').remove();
+                   $("#message").after('<div class="error">Please enter a valid email address and message</div>');
+                   event.preventDefault();
+               }
+           });
+       });
+   </script>
 
   <div id="main-content">
       <section id="top"></section><!-- do not remove ;)-->
@@ -41,41 +114,39 @@
       </header>
             <div class="recent-work columns">
         
-            <strong>Enter Quantity:</strong> <asp:TextBox ID="tbQuantity" runat="server" Width="140px" />
-    <asp:RequiredFieldValidator ID="rftbQuantity" runat="server" ControlToValidate="tbQuantity" ForeColor="Red" ErrorMessage="*" ValidationGroup="product"></asp:RequiredFieldValidator>
-   <asp:RegularExpressionValidator ID="rgxTbQuantity" runat="server" ControlToValidate="tbQuantity" ForeColor="Red" ErrorMessage="*Please enter a number" Display="Dynamic"  ValidationExpression="[\d]" ValidationGroup="product" />
+            <strong>Enter Quantity:</strong> <asp:TextBox ID="tbQuantity" CssClass="qty" runat="server" Width="140px" ValidationGroup="quantitygrp" />
+            <asp:RequiredFieldValidator ID="rfQuantity" runat="server" ControlToValidate="tbQuantity" ForeColor="Red" ErrorMessage="*"  ValidationGroup="quantitygrp"></asp:RequiredFieldValidator>
+            <asp:RegularExpressionValidator ID="rgxQuantity" runat="server" ControlToValidate="tbQuantity" ForeColor="Red" ErrorMessage="*Please enter a number" Display="Dynamic"  ValidationGroup="quantitygrp"></asp:RegularExpressionValidator>
 
     &nbsp;
 
-    <asp:Button ID="btnsearch" runat="server" Text="Search Quantity" CssClass="button" OnClick="btnsearch_Click" /> <br /><br />
+    <asp:Button ID="btnsearch" runat="server" Text="Search Quantity" CssClass="button prod" OnClick="btnsearch_Click" ValidationGroup="quantitygrp" /> <br /><br />
     <asp:UpdatePanel ID="UpdatePanel2" runat="server">
         <ContentTemplate> 
-    <asp:GridView ID="productsGrid" runat="server" CellPadding="10" CellSpacing="10"  HeaderStyle-Font-Bold="true" Width="900px"
-        AutoGenerateColumns="false" GridLines="Both">
-        <Columns>
-            <asp:BoundField DataField="sku" HeaderText="Sku" />
-            <asp:BoundField DataField="name" HeaderText="Name" />
-            <asp:BoundField DataField="description" HeaderText="Description" />
-            <asp:BoundField DataField="quantity" HeaderText="Quantity" />
-        </Columns>
-    </asp:GridView>
+            <telerik:RadGrid ID="productsGrid" runat="server" AutoGenerateColumns="false" HeaderStyle-Font-Bold="true">
+             <MasterTableView Width="100%">
+              <Columns>
+                <telerik:GridBoundColumn SortExpression="sku" HeaderText="Sku" DataField="sku" >
+                </telerik:GridBoundColumn>
+                <telerik:GridBoundColumn SortExpression="name" HeaderText="Name" DataField="name">
+                </telerik:GridBoundColumn>
+                <telerik:GridBoundColumn SortExpression="description" HeaderText="Description" DataField="description">
+                </telerik:GridBoundColumn>
+                <telerik:GridBoundColumn SortExpression="quantity" HeaderText="Quantity" DataField="quantity" />
+            </Columns>
+            </MasterTableView>
+            </telerik:RadGrid>
               </ContentTemplate>
             <Triggers>
                 <asp:AsyncPostBackTrigger ControlID="btnsearch" EventName="Click" /> 
             </Triggers>
         </asp:UpdatePanel> <br />
-          <strong>Enter Email to quantity details: </strong> <asp:TextBox ID="tbEmail" CssClass="email" runat="server" Width="140px" />
-     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="tbEmail" ForeColor="Red" ErrorMessage="*" ValidationGroup="product"></asp:RequiredFieldValidator>
-   <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="tbEmail" ForeColor="Red" ErrorMessage="*Please enter a valid email address"  Display="Dynamic"
-        ValidationExpression="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$" ValidationGroup="product" />
+          <strong>Enter Email to quantity details: </strong> <asp:TextBox ID="tbEmail" CssClass="email" runat="server" Width="140px" ValidationGroup="productgrp" />
+          <asp:RequiredFieldValidator ID="rfEmail" runat="server"  ControlToValidate="tbEmail" ForeColor="Red" ErrorMessage="*" ValidationGroup="productgrp"/>
+
     &nbsp;
-    <asp:Button ID="btnSend" runat="server" Text="Send Email" CssClass="button" OnClick="btnSend_Click" ValidationGroup="product" />
-        <%--<div class="two-column">
-          <figure><a href="images/pricing_table_3.jpg" rel="recent_work" class="zoom"><img src="images/work_1.jpg" alt="Image"></a></figure>
-        </div>
-        <div class="two-column last">
-          <figure><a href="images/pricing_table_3.jpg" rel="recent_work" class="zoom"><img src="images/work_2.jpg" alt="Image"></a></figure>
-        </div>--%>
+    <asp:Button ID="btnSend" runat="server" Text="Send Email" CssClass="button mail" OnClick="btnSend_Click" ValidationGroup="productgrp" />
+       
 
       </div>
 
@@ -86,12 +157,16 @@
         <h2>Have Any Questions?</h2>
       </header>
       
-      <form action="#" method="post">
+    <%--  <form action="#" method="post">
       	<p><input type="text" name="name"  value="Your Name" id="name" onblur="if (this.value == ''){this.value = 'Your Name'; }" onfocus="if (this.value == 'Your Name') {this.value = '';}" /></p>
         <p><input type="text" name="email" value="Your Email" id="email"  onblur="if (this.value == ''){this.value = 'Your Email'; }" onfocus="if (this.value == 'Your Email') {this.value = '';}" /></p>
         <p><textarea cols="20" rows="7" name="message" id="message" onblur="if (this.value == ''){this.value = 'Your Message'; }" onfocus="if (this.value == 'Your Message') {this.value = '';}" >Your Message</textarea></p>
         <p><input type="submit" name="submit" value="Send Message" class="button" /></p>
-      </form>
+      </form>--%>
+        <p><input type="text" name="name" value="Your Name" id="name" runat="server" onblur="if (this.value == ''){this.value = 'Your Name'; }" onfocus="if (this.value == 'Your Name') {this.value = '';}" /></p>
+        <p><input type="text" name="email" value="Your Email" id="email" runat="server" onblur="if (this.value == ''){this.value = 'Your Email'; }" onfocus="if (this.value == 'Your Email') {this.value = '';}" /></p>
+        <p><textarea cols="20" rows="7" class="message" name="message" id="message" runat="server" onblur="if (this.value == ''){this.value = 'Your Message'; }" onfocus="if (this.value == 'Your Message') {this.value = '';}" >Your Message</textarea></p>
+        <p><asp:Button ID="contactBtn" runat="server" Text="Send Message" CssClass="button msg" OnClick="contactBtn_Click"  /></p>
       <div class="social_wrapper">
         	<h3>Where to find me?</h3>
             <ul class="social">

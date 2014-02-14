@@ -27,6 +27,18 @@ namespace ccgWebApp
                 ViewState["products"] = value;
             }
         }
+       
+        public bool EmailFromProductLookup
+        {
+            get { return ViewState["EmailFromProductLookup"] == null ? false : (bool)ViewState["EmailFromProductLookup"]; }
+            set { ViewState["EmailFromProductLookup"] = value; }
+        }
+
+        public bool EmailFromContactSection
+        {
+            get { return ViewState["EmailFromContactSection"] == null ? false : (bool)ViewState["EmailFromContactSection"]; }
+            set { ViewState["EmailFromContactSection"] = value; }
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -70,27 +82,74 @@ namespace ccgWebApp
                    System.Net.NetworkCredential("ogolanick@gmail.com", "gzee6900");
                 mySmtpClient.Credentials = basicAuthenticationInfo;
 
-                // add from,to mailaddresses
-                MailAddress from = new MailAddress("ogolanick@gmail.com", "Nick Ogola");
-                MailAddress to = new MailAddress(tbEmail.Text, "8th wonder");
-                MailMessage myMail = new System.Net.Mail.MailMessage(from, to);
+                if (EmailFromProductLookup)
+                {
+                    // add from,to mailaddresses
+                    MailAddress from = new MailAddress("ogolanick@gmail.com", "Nick Ogola");
+                    MailAddress to = new MailAddress(tbEmail.Text, "8th wonder");
+                    MailMessage myMail = new System.Net.Mail.MailMessage(from, to);
 
-                // add ReplyTo
-                MailAddress replyto = new MailAddress("ogolanick@gmail.com");
-                myMail.ReplyTo = replyto;
+                    // add ReplyTo
+                    MailAddress replyto = new MailAddress("ogolanick@gmail.com");
+                    myMail.ReplyTo = replyto;
 
-                // set subject and encoding
-                myMail.Subject = "Products Details";
-                myMail.SubjectEncoding = System.Text.Encoding.UTF8;
+                    // set subject and encoding
+                    myMail.Subject = "Product Details";
+                    myMail.SubjectEncoding = System.Text.Encoding.UTF8;
 
-                // set body-message and encoding
-                myMail.Body = "<b>Below are product details sent to you from " + to + " </b><br /><br /><b>Product Sku: </b> " + products[0].sku +
-                    "<br /> <b>Name: </b>" + products[0].name + "<br /> <b>Description: </b>" + products[0].description + "<br /> <b>Quantity: </b>" + products[0].quantity;
-                myMail.BodyEncoding = System.Text.Encoding.UTF8;
-                // text or html
-                myMail.IsBodyHtml = true;
-                mySmtpClient.EnableSsl = true;
-                mySmtpClient.Send(myMail);
+                    // set body-message and encoding
+                    myMail.Body = "<b>Below are product details sent to you from " + from;
+                    if (products.Count() > 1)
+                    {
+                        foreach (Product product in products)
+                        {
+                            myMail.Body += " </b><br /><br /><b>Product Sku: </b> " + product.sku +
+                            "<br /> <b>Name: </b>" + product.name + "<br /> <b>Description: </b>" + product.description + "<br /> <b>Quantity: </b>" + product.quantity;
+                        }
+                    }
+                    else
+                    {
+                        myMail.Body += " </b><br /><br /><b>Product Sku: </b> " + products[0].sku +
+                            "<br /> <b>Name: </b>" + products[0].name + "<br /> <b>Description: </b>" + products[0].description + "<br /> <b>Quantity: </b>" + products[0].quantity;
+                    }
+
+                    myMail.BodyEncoding = System.Text.Encoding.UTF8;
+                    // text or html
+                    myMail.IsBodyHtml = true;
+                    mySmtpClient.EnableSsl = true;
+                    mySmtpClient.Send(myMail);
+                }
+                else if (EmailFromContactSection)
+                {
+                    // add from,to mailaddresses
+                    MailAddress from = new MailAddress(email.Value, "Nick Ogola");
+                    MailAddress to = new MailAddress("ogolanick@gmail.com", name.Value);
+                    MailMessage myMail = new System.Net.Mail.MailMessage(from, to);
+
+                    // add ReplyTo
+                    MailAddress replyto = new MailAddress("ogolanick@gmail.com");
+                    myMail.ReplyTo = replyto;
+
+                    // set subject and encoding
+                    myMail.Subject = "Customer Contact";
+                    myMail.SubjectEncoding = System.Text.Encoding.UTF8;
+
+                    // set body-message and encoding
+                    myMail.Body = "<b>Below is a message sent to you from " + name.Value + "<br /><br />" + message.Value;
+                        
+                        //"<b>Below are product details sent to you from " + from;
+                   
+                        //myMail.Body += " </b><br /><br /><b>Product Sku: </b> " + products[0].sku +
+                        //    "<br /> <b>Name: </b>" + products[0].name + "<br /> <b>Description: </b>" + products[0].description + "<br /> <b>Quantity: </b>" + products[0].quantity;
+                    
+
+                    myMail.BodyEncoding = System.Text.Encoding.UTF8;
+                    // text or html
+                    myMail.IsBodyHtml = true;
+                    mySmtpClient.EnableSsl = true;
+                    mySmtpClient.Send(myMail);
+                }
+               
             }
 
             catch (SmtpException ex)
@@ -105,12 +164,21 @@ namespace ccgWebApp
         }
         protected void btnSend_Click(object sender, EventArgs e)
         {
+            EmailFromContactSection = false;
+            EmailFromProductLookup = true;
             sendMail();
         }
 
         protected void btnsearch_Click(object sender, EventArgs e)
         {
             LoadGrid();
+        }
+
+        protected void contactBtn_Click(object sender, EventArgs e)
+        {
+            EmailFromContactSection = true;
+            EmailFromProductLookup = false;
+            sendMail();
         }
     }
 }

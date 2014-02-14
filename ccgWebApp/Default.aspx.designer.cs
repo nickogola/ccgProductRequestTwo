@@ -22,22 +22,22 @@ namespace ccgWebApp {
         protected global::System.Web.UI.WebControls.TextBox tbQuantity;
         
         /// <summary>
-        /// rftbQuantity control.
+        /// rfQuantity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rftbQuantity;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfQuantity;
         
         /// <summary>
-        /// rgxTbQuantity control.
+        /// rgxQuantity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator rgxTbQuantity;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator rgxQuantity;
         
         /// <summary>
         /// btnsearch control.
@@ -64,7 +64,7 @@ namespace ccgWebApp {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView productsGrid;
+        protected global::Telerik.Web.UI.RadGrid productsGrid;
         
         /// <summary>
         /// tbEmail control.
@@ -76,22 +76,13 @@ namespace ccgWebApp {
         protected global::System.Web.UI.WebControls.TextBox tbEmail;
         
         /// <summary>
-        /// RequiredFieldValidator1 control.
+        /// rfEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
-        
-        /// <summary>
-        /// RegularExpressionValidator1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator1;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfEmail;
         
         /// <summary>
         /// btnSend control.
@@ -101,5 +92,41 @@ namespace ccgWebApp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSend;
+        
+        /// <summary>
+        /// name control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText name;
+        
+        /// <summary>
+        /// email control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText email;
+        
+        /// <summary>
+        /// message control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea message;
+        
+        /// <summary>
+        /// contactBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button contactBtn;
     }
 }
