@@ -201,19 +201,6 @@
     <asp:Button ID="btnsearch" runat="server" Text="Search Quantity" CssClass="button prod" OnClick="btnsearch_Click" ValidationGroup="quantitygrp" /> <br /><br />
     <asp:UpdatePanel ID="UpdatePanel2" runat="server">
         <ContentTemplate> 
-           <%-- <telerik:RadGrid ID="productsGrid" runat="server" AutoGenerateColumns="false" HeaderStyle-Font-Bold="true">
-             <MasterTableView Width="100%">
-              <Columns>
-                <telerik:GridBoundColumn SortExpression="sku" HeaderText="Sku" DataField="sku" >
-                </telerik:GridBoundColumn>
-                <telerik:GridBoundColumn SortExpression="name" HeaderText="Name" DataField="name">
-                </telerik:GridBoundColumn>
-                <telerik:GridBoundColumn SortExpression="description" HeaderText="Description" DataField="description">
-                </telerik:GridBoundColumn>
-                <telerik:GridBoundColumn SortExpression="quantity" HeaderText="Quantity" DataField="quantity" />
-            </Columns>
-            </MasterTableView>
-            </telerik:RadGrid>--%>
             <asp:GridView ID="productsGrid" runat="server" AutoGenerateColumns="False"
               CellPadding="20" CellSpacing="10">
                 <FooterStyle CssClass="GridViewFooterStyle" />
