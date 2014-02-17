@@ -13,7 +13,7 @@
                if (!regex.test($(this).val())) {
                    if ($(this).val().length > 0) {
                        $(this).next('.error').remove();
-                       $(this).after('<div class="error">Please enter a number</div>');
+                       $(this).after('<div class="error" style="color:#ff0000;">Please enter a number</div>');
                        $(this).preventdefault();
                    }
                    else {
@@ -30,7 +30,7 @@
                if (!regex.test($(this).val())) {
                    if ($(this).val().length > 0) {
                        $(this).next('.error').remove();
-                       $(this).after('<div class="error">Please enter a valid email address</div>');
+                       $(this).after('<div class="error" style="color:#ff0000;">Please enter a valid email address</div>');
                        $(this).preventdefault();
                    }
                    else {
@@ -43,17 +43,21 @@
 
            $(".prod").click(function (event) {
                regex = /^-*[0-9,\.]+$/;
-               if (!regex.test($(this).val())) {
-                 
+               if (!regex.test($('.qty').val())) {
+                  // if ($('.qty').val().length > 0) {
                        $('.qty').next('.error').remove();
-                       // $('.qty').after('<div class="error">Please enter a number</div>');
+                       $('.qty').after('<div class="error" style="color:#ff0000;">Please enter a number</div>');
                        event.preventdefault();
+                   //}
+                   //else {
+                   //    $(this).next('.error').remove();
+                   //}
                } else {
                    $(this).next('.error').remove();
                }
 
                if ($(this).val().length == 0) {
-                   $('.qty').after('<div class="error">Please enter a number</div>');
+                   $('.qty').after('<div class="error" style="color:#ff0000;">Please enter a number</div>');
                    event.preventdefault();
                }
            });
@@ -61,7 +65,7 @@
                regex = /^([0-9a-zA-Z]([-\.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$/;
                if (!regex.test($('.email').val())) {
                        $('.email').next('.error').remove();
-                       $('.email').after('<div class="error">Please enter a valid email address</div>');
+                       $('.email').after('<div class="error" style="color:#ff0000;">Please enter a valid email address</div>');
                        event.preventDefault();
                    
                } else {
@@ -72,12 +76,86 @@
            $(".msg").click(function (event) {
                if ($("#message").val() == null) {
                    $("#message").next('.error').remove();
-                   $("#message").after('<div class="error">Please enter a valid email address and message</div>');
+                   $("#message").after('<div class="error" style="color:#ff0000;">Please enter a valid email address and message</div>');
                    event.preventDefault();
                }
            });
        });
    </script>
+
+   <style type="text/css">
+.GridViewStyle
+{    
+    border-right: 2px solid #A7A6AA;
+    border-bottom: 2px solid #A7A6AA;
+    border-left: 2px solid white;
+    border-top: 2px solid white;
+    padding: 4px;
+ 
+}
+
+.GridViewStyle a
+{
+    color: #FFFFFF;
+}
+
+.GridViewHeaderStyle th
+{
+    border-left: 1px solid #EBE9ED;
+    border-right: 1px solid #EBE9ED;
+}
+
+.GridViewHeaderStyle
+{
+    background-color: #5D7B9D;
+    font-weight: bold;
+    color: White;
+}
+
+.GridViewFooterStyle
+{
+    background-color: #5D7B9D;
+    font-weight: bold;
+    color: White;
+}
+
+.GridViewRowStyle
+{
+    background-color: #F7F6F3;
+    color: #333333;
+}
+
+.GridViewAlternatingRowStyle 
+{
+    background-color: #FFFFFF;
+    color: #284775;
+}
+
+.GridViewRowStyle td, .GridViewAlternatingRowStyle td
+{
+    border: 1px solid #EBE9ED;
+       font-family: "Segoe UI",Arial,Helvetica,sans-serif;
+    font-size: 12px;
+}
+
+.GridViewSelectedRowStyle
+{
+    background-color: #E2DED6;
+    font-weight: bold;
+    color: #333333;
+}
+
+.GridViewPagerStyle
+{
+    background-color: #284775;
+    color: #FFFFFF;
+}
+
+.GridViewPagerStyle table /* to center the paging links*/
+{
+    margin: 0 auto 0 auto;
+}
+   </style>
 
   <div id="main-content">
       <section id="top"></section><!-- do not remove ;)-->
@@ -116,14 +194,14 @@
         
             <strong>Enter Quantity:</strong> <asp:TextBox ID="tbQuantity" CssClass="qty" runat="server" Width="140px" ValidationGroup="quantitygrp" />
             <asp:RequiredFieldValidator ID="rfQuantity" runat="server" ControlToValidate="tbQuantity" ForeColor="Red" ErrorMessage="*"  ValidationGroup="quantitygrp"></asp:RequiredFieldValidator>
-            <asp:RegularExpressionValidator ID="rgxQuantity" runat="server" ControlToValidate="tbQuantity" ForeColor="Red" ErrorMessage="*Please enter a number" Display="Dynamic"  ValidationGroup="quantitygrp"></asp:RegularExpressionValidator>
+            <%--<asp:RegularExpressionValidator ID="rgxQuantity" runat="server" ControlToValidate="tbQuantity" ForeColor="Red" ErrorMessage="*Please enter a number" Display="Dynamic"  ValidationGroup="quantitygrp"></asp:RegularExpressionValidator>--%>
 
     &nbsp;
 
     <asp:Button ID="btnsearch" runat="server" Text="Search Quantity" CssClass="button prod" OnClick="btnsearch_Click" ValidationGroup="quantitygrp" /> <br /><br />
     <asp:UpdatePanel ID="UpdatePanel2" runat="server">
         <ContentTemplate> 
-            <telerik:RadGrid ID="productsGrid" runat="server" AutoGenerateColumns="false" HeaderStyle-Font-Bold="true">
+           <%-- <telerik:RadGrid ID="productsGrid" runat="server" AutoGenerateColumns="false" HeaderStyle-Font-Bold="true">
              <MasterTableView Width="100%">
               <Columns>
                 <telerik:GridBoundColumn SortExpression="sku" HeaderText="Sku" DataField="sku" >
@@ -135,12 +213,28 @@
                 <telerik:GridBoundColumn SortExpression="quantity" HeaderText="Quantity" DataField="quantity" />
             </Columns>
             </MasterTableView>
-            </telerik:RadGrid>
+            </telerik:RadGrid>--%>
+            <asp:GridView ID="productsGrid" runat="server" AutoGenerateColumns="False"
+              CellPadding="20" CellSpacing="10">
+                <FooterStyle CssClass="GridViewFooterStyle" />
+                <RowStyle CssClass="GridViewRowStyle" />    
+                <SelectedRowStyle CssClass="GridViewSelectedRowStyle" />
+                <PagerStyle CssClass="GridViewPagerStyle" />
+                <AlternatingRowStyle CssClass="GridViewAlternatingRowStyle" />
+                <HeaderStyle CssClass="GridViewHeaderStyle" />
+                <Columns>
+                    <asp:BoundField DataField="sku" HeaderText="Sku" SortExpression="sku" />
+                    <asp:BoundField DataField="name" HeaderText="Name" SortExpression="name" />
+                    <asp:BoundField DataField="description" HeaderText="Description" SortExpression="description" />
+                    <asp:BoundField DataField="quantity" HeaderText="Quantity" SortExpression="quantity" />
+                </Columns>
+            </asp:GridView>
+            <asp:Label ID="lNoResults" ForeColor="Red" runat="server"></asp:Label>
               </ContentTemplate>
             <Triggers>
                 <asp:AsyncPostBackTrigger ControlID="btnsearch" EventName="Click" /> 
             </Triggers>
-        </asp:UpdatePanel> <br />
+        </asp:UpdatePanel> <br /><br />
           <strong>Enter Email to quantity details: </strong> <asp:TextBox ID="tbEmail" CssClass="email" runat="server" Width="140px" ValidationGroup="productgrp" />
           <asp:RequiredFieldValidator ID="rfEmail" runat="server"  ControlToValidate="tbEmail" ForeColor="Red" ErrorMessage="*" ValidationGroup="productgrp"/>
 
@@ -157,12 +251,6 @@
         <h2>Have Any Questions?</h2>
       </header>
       
-    <%--  <form action="#" method="post">
-      	<p><input type="text" name="name"  value="Your Name" id="name" onblur="if (this.value == ''){this.value = 'Your Name'; }" onfocus="if (this.value == 'Your Name') {this.value = '';}" /></p>
-        <p><input type="text" name="email" value="Your Email" id="email"  onblur="if (this.value == ''){this.value = 'Your Email'; }" onfocus="if (this.value == 'Your Email') {this.value = '';}" /></p>
-        <p><textarea cols="20" rows="7" name="message" id="message" onblur="if (this.value == ''){this.value = 'Your Message'; }" onfocus="if (this.value == 'Your Message') {this.value = '';}" >Your Message</textarea></p>
-        <p><input type="submit" name="submit" value="Send Message" class="button" /></p>
-      </form>--%>
         <p><input type="text" name="name" value="Your Name" id="name" runat="server" onblur="if (this.value == ''){this.value = 'Your Name'; }" onfocus="if (this.value == 'Your Name') {this.value = '';}" /></p>
         <p><input type="text" name="email" value="Your Email" id="email" runat="server" onblur="if (this.value == ''){this.value = 'Your Email'; }" onfocus="if (this.value == 'Your Email') {this.value = '';}" /></p>
         <p><textarea cols="20" rows="7" class="message" name="message" id="message" runat="server" onblur="if (this.value == ''){this.value = 'Your Message'; }" onfocus="if (this.value == 'Your Message') {this.value = '';}" >Your Message</textarea></p>

@@ -68,6 +68,12 @@ namespace ccgWebApp
             //products.Add(deserializedProduct);
             productsGrid.DataSource = products;
             productsGrid.DataBind();
+
+            if (productsGrid.Rows.Count == 0)
+                lNoResults.Text = "No Records to display";
+            else
+                lNoResults.Text = string.Empty;
+
         }
         protected void sendMail()
         {

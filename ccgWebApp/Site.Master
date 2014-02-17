@@ -24,67 +24,17 @@
             <asp:ScriptReference Name="MsAjaxBundle" />
             <asp:ScriptReference Name="jquery" />
             <asp:ScriptReference Name="jquery.ui.combined" />
-       <%--     <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
-            <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
-            <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
-            <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
-            <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
-            <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
-            <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
-            <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
-            <asp:ScriptReference Name="jquery-1.4.3.min.js" Assembly="System.Web"  Path="~/Scripts/jquery-1.4.3.min.js" />
-            <asp:ScriptReference Name="jquery_002.js" Assembly="System.Web"  Path="~/Scripts/jquery_002.js" />
-            <asp:ScriptReference Name="jquery_003.js" Assembly="System.Web"  Path="~/Scripts/jquery_003.js" />
-            <asp:ScriptReference Name="jquery.js" Assembly="System.Web"  Path="~/Scripts/jquery.js" />
-            <asp:ScriptReference Name="smoothscroll.js" Assembly="System.Web"  Path="~/Scripts/smoothscroll.js" />
-            <asp:ScriptReference Name="WebFormsBundle" />
-            <%--Site Scripts--%>
+       
 
         </Scripts>
     </asp:ScriptManager>
-    <%--<header>
-        <div class="content-wrapper">
-            <div class="float-left">
-                <p class="site-title">
-                    <a runat="server" href="~/">Product Quantity API</a>
-                </p>
-            </div>
-         
-                    <asp:LoginView runat="server" ViewStateMode="Disabled">
-                        <AnonymousTemplate>
-                            <ul>
-                                <li><a id="registerLink" runat="server" href="~/Account/Register">Register</a></li>
-                                <li><a id="loginLink" runat="server" href="~/Account/Login">Log in</a></li>
-                            </ul>
-                        </AnonymousTemplate>
-                        <LoggedInTemplate>
-                            <p>
-                                Hello, <a runat="server" class="username" href="~/Account/Manage" title="Manage your account">
-                                    <asp:LoginName runat="server" CssClass="username" /></a>!
-                                <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" />
-                            </p>
-                        </LoggedInTemplate>
-                    </asp:LoginView>
-                
-               
-                <nav>
-                    <ul id="menu">
-                        <li><a runat="server" href="~/">Home</a></li>
-                        <li><a runat="server" href="~/About">About</a></li>
-                        <li><a runat="server" href="~/Contact">Contact</a></li>
-                    </ul>
-                </nav>
-
-            </div>
-       
-    </header>--%>
+    
     <div id="page">
   <aside id="sidebar">
     <nav><a class="logo" href="#top" id="nav-logo"><span>Nick Ogola</span>CCG Marketing product demo</a>
       <ul>
      	<li class="active" id="nav-1"><a href="#home">Home</a></li>
         <li id="nav-2"><a href="#work">Product Lookup</a></li>
-        <%--<li id="nav-3"><a href="#about">About</a></li>--%>
         <li id="nav-4"><a href="#contact">Contact</a></li>
       </ul>
       <div class="bg_bottom"></div>

@@ -31,15 +31,6 @@ namespace ccgWebApp {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfQuantity;
         
         /// <summary>
-        /// rgxQuantity control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator rgxQuantity;
-        
-        /// <summary>
         /// btnsearch control.
         /// </summary>
         /// <remarks>
@@ -64,7 +55,16 @@ namespace ccgWebApp {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadGrid productsGrid;
+        protected global::System.Web.UI.WebControls.GridView productsGrid;
+        
+        /// <summary>
+        /// lNoResults control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lNoResults;
         
         /// <summary>
         /// tbEmail control.

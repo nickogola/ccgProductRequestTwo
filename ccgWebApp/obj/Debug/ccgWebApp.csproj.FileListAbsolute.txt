@@ -33,3 +33,5 @@ C:\Users\Nick\Documents\Visual Studio 2012\Projects\ccgWebApp\ccgWebApp\bin\Micr
 C:\Users\Nick\Documents\Visual Studio 2012\Projects\ccgWebApp\ccgWebApp\obj\Debug\ccgWebApp.dll
 C:\Users\Nick\Documents\Visual Studio 2012\Projects\ccgWebApp\ccgWebApp\obj\Debug\ccgWebApp.pdb
 C:\Users\Nick\Documents\Visual Studio 2012\Projects\ccgWebApp\ccgWebApp\obj\Debug\ccgWebApp.csprojResolveAssemblyReference.cache
+C:\Users\Nick\documents\visual studio 2012\Projects\ccgWebApp\ccgWebApp\bin\EntityFramework.SqlServer.dll
+C:\Users\Nick\documents\visual studio 2012\Projects\ccgWebApp\ccgWebApp\bin\EntityFramework.SqlServer.xml
