@@ -13,7 +13,7 @@
                if (!regex.test($(this).val())) {
                    if ($(this).val().length > 0) {
                        $(this).next('.error').remove();
-                       $(this).after('<div class="error" style="color:#ff0000;">Please enter a number</div>');
+                       $(this).after('<label class="error" style="color:#ff0000;">Please enter a number</label>');
                        $(this).preventdefault();
                    }
                    else {
@@ -30,7 +30,7 @@
                if (!regex.test($(this).val())) {
                    if ($(this).val().length > 0) {
                        $(this).next('.error').remove();
-                       $(this).after('<div class="error" style="color:#ff0000;">Please enter a valid email address</div>');
+                       $(this).after('<label class="error" style="color:#ff0000;">Please enter a valid email address</label>');
                        $(this).preventdefault();
                    }
                    else {
@@ -46,7 +46,7 @@
                if (!regex.test($('.qty').val())) {
                   // if ($('.qty').val().length > 0) {
                        $('.qty').next('.error').remove();
-                       $('.qty').after('<div class="error" style="color:#ff0000;">Please enter a number</div>');
+                       $('.qty').after('<label class="error" style="color:#ff0000;">Please enter a number</label>');
                        event.preventdefault();
                    //}
                    //else {
@@ -57,7 +57,7 @@
                }
 
                if ($(this).val().length == 0) {
-                   $('.qty').after('<div class="error" style="color:#ff0000;">Please enter a number</div>');
+                   $('.qty').after('<label class="error" style="color:#ff0000;">Please enter a number</label>');
                    event.preventdefault();
                }
            });
@@ -65,7 +65,7 @@
                regex = /^([0-9a-zA-Z]([-\.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$/;
                if (!regex.test($('.email').val())) {
                        $('.email').next('.error').remove();
-                       $('.email').after('<div class="error" style="color:#ff0000;">Please enter a valid email address</div>');
+                       $('.email').after('<label class="error" style="color:#ff0000;">Please enter a valid email address</label>');
                        event.preventDefault();
                    
                } else {
@@ -76,7 +76,7 @@
            $(".msg").click(function (event) {
                if ($("#message").val() == null) {
                    $("#message").next('.error').remove();
-                   $("#message").after('<div class="error" style="color:#ff0000;">Please enter a valid email address and message</div>');
+                   $("#message").after('<label class="error" style="color:#ff0000;">Please enter a valid email address and message</label>');
                    event.preventDefault();
                }
            });
@@ -158,7 +158,7 @@
    </style>
 
   <div id="main-content">
-      <section id="top"></section><!-- do not remove ;)-->
+    <section id="top"></section><!-- do not remove ;)-->
     <section id="home">
       <div id="loader" class="loader"></div>
       <div id="ps_container" class="ps_container"> <span class="ribbon"></span>
